@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import App from './App.vue';
+import '@/utils/maya-controls';
 
 require('aframe');
 require('aframe-curve-component');

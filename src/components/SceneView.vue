@@ -13,7 +13,7 @@
     <!-- Draw the Curve -->
     <a-draw-curve curveref="#track1" material="shader: line; color: blue; linewidth: 5;"></a-draw-curve>
 
-    <a-camera>
+    <a-camera maya-controls>
       <a-cursor raycaster="objects: .clickable"></a-cursor>
     </a-camera>
   </a-scene>
