@@ -150,6 +150,7 @@ AFRAME.registerComponent('maya-controls', {
         this.onMouseDown = bind(this.onMouseDown, this);
         this.onMouseMove = bind(this.onMouseMove, this);
         this.onMouseUp = bind(this.onMouseUp, this);
+        this.onMouseWheelChange = bind(this.onMouseWheelChange, this);
         this.onTouchStart = bind(this.onTouchStart, this);
         this.onTouchMove = bind(this.onTouchMove, this);
         this.onTouchEnd = bind(this.onTouchEnd, this);
@@ -195,6 +196,7 @@ AFRAME.registerComponent('maya-controls', {
         canvasEl.addEventListener('mousedown', this.onMouseDown, false);
         window.addEventListener('mousemove', this.onMouseMove, false);
         window.addEventListener('mouseup', this.onMouseUp, false);
+        window.addEventListener("mousewheel", this.onMouseWheelChange);
 
         // Touch events.
         canvasEl.addEventListener('touchstart', this.onTouchStart);
@@ -226,6 +228,7 @@ AFRAME.registerComponent('maya-controls', {
         canvasEl.removeEventListener('mousedown', this.onMouseDown);
         window.removeEventListener('mousemove', this.onMouseMove);
         window.removeEventListener('mouseup', this.onMouseUp);
+        window.removeEventListener('mousewheel', this.onMouseWheelChange);
 
         // Touch events.
         canvasEl.removeEventListener('touchstart', this.onTouchStart);
@@ -411,6 +414,11 @@ AFRAME.registerComponent('maya-controls', {
         if (evt.button === 1) {
             this.middleClickPressed = false;
         }
+    },
+
+    onMouseWheelChange: function (evt) {
+        console.log('mouse wheel scrolling');
+        this.el.object3D.position.add(this.getZoomVector(evt.deltaY * 0.01));
     },
 
     /**

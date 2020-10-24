@@ -14,7 +14,8 @@ Vue.config.ignoredElements = [
   'a-camera',
   'a-cursor',
   'a-sphere',
-  'a-cylinder'
+  'a-cylinder',
+  'a-curve'
 ];
 
 new Vue({
